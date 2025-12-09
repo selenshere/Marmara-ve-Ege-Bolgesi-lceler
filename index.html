@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Seçili İller İçin İnteraktif Harita</title>
+  <title>Seçili İller İlçe Haritası</title>
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -33,9 +33,9 @@
       İl Sınırlarını Göster
     </button>
 
-    <button id="zoomIn" class="btn secondary">Zoom +</button>
-    <button id="zoomOut" class="btn secondary">Zoom -</button>
-    <button id="zoomReset" class="btn secondary">Zoom Sıfırla</button>
+    <button id="zoomIn" class="btn secondary">Yakınlaştır (+)</button>
+    <button id="zoomOut" class="btn secondary">Uzaklaştır (-)</button>
+    <button id="zoomReset" class="btn secondary">Sıfırla</button>
 
     <button id="saveSvg" class="btn">
       SVG Olarak Kaydet
@@ -47,7 +47,11 @@
     </label>
   </div>
 
-  <!-- Haritanın geleceği alan -->
-  <div id="turkey-map" data-bg-color="#FFF5D0"></div>
+  <!-- Harita alanı -->
+  <div id="turkey-map" data-bg-color="#FFF5D0">
+    <!-- Sol üstte il + ilçe adı -->
+    <div class="hover-info"></div>
+    <!-- SVG buraya JS ile yüklenecek -->
+  </div>
 </body>
 </html>
