@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Seçili İller İçin İnteraktif Harita</title>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Harita CSS ve JS -->
+  <link rel="stylesheet" href="turkey-map/style/style.css">
+  <script src="turkey-map/js/main.js"></script>
+
+  <!-- Sayfa için ufak stil -->
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #f3f4f6;
+    }
+    .controls {
+      max-width: 1400px;
+      margin: 20px auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+    .controls label {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    }
+    .controls input[type="color"],
+    .controls input[type="file"],
+    .controls input[type="range"] {
+      font-size: 13px;
+    }
+    .controls input[type="color"] {
+      width: 40px;
+      height: 24px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    .controls input[type="range"] {
+      width: 120px;
+    }
+    .btn {
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      background: #2563eb;
+      color: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,.15);
+      transition: transform .1s, box-shadow .1s, background .1s;
+    }
+    .btn.secondary {
+      background: #6b7280;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0,0,0,.18);
+    }
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 3px rgba(0,0,0,.15);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Kontroller -->
+  <div class="controls">
+    <label>
+      Renk seç:
+      <input type="color" id="colorPicker" value="#3EA1AA">
+    </label>
+
+    <label>
+      Yazı boyutu:
+      <input type="range" id="labelSize" min="6" max="24" value="11">
+      <span id="labelSizeValue">11px</span>
+    </label>
+
+    <button id="toggleLabels" class="btn secondary">
+      İsimleri Göster
+    </button>
+
+    <button id="toggleBorders" class="btn secondary">
+      İl Sınırlarını Göster
+    </button>
+
+    <button id="zoomIn" class="btn secondary">
+      Zoom +
+    </button>
+    <button id="zoomOut" class="btn secondary">
+      Zoom -
+    </button>
+    <button id="zoomReset" class="btn secondary">
+      Zoom Sıfırla
+    </button>
+
+    <button id="saveSvg" class="btn">
+      SVG Olarak Kaydet
+    </button>
+
+    <button id="savePng" class="btn">
+      PNG Olarak Kaydet
+    </button>
+
+    <label>
+      Hazır harita yükle (SVG):
+      <input type="file" id="loadSvg" accept=".svg,image/svg+xml">
+    </label>
+  </div>
+
+  <!-- Harita -->
+  <div id="turkey-map"
+       data-map="districts"
+       data-bg-color="#FFF5D0">
+  </div>
+
+</body>
+</html>
